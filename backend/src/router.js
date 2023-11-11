@@ -1,8 +1,9 @@
 const express = require('express');
+const tasksController = require('./controllers/taskscontroller');
 
 const router = express.Router();
 
-router.get('/tasks', (req, res) => res.status(200).send('agora sim'));
+router.get('/tasks', tasksController.getAll);
 
 module.exports = router;
 
