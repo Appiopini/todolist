@@ -17,11 +17,11 @@ const deleteTask = async (request, response) => {
   return response.status(202).json('task deleted');
 };
 
-const deleteTask = async (request, response) => {
+const updateTask = async (request, response) => {
   const { id } = request.params;
 
-  await tasksModel.deleteTask(id);
-  return response.status(202).json('task deleted');
+  await tasksModel.updateTask(id, request.body);
+  return response.status(204).json('tasks updated');
 };
 
 
@@ -29,4 +29,5 @@ module.exports = {
   getAll,
   createTask,
   deleteTask,
+  updateTask
 };

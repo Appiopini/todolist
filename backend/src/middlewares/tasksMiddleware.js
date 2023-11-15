@@ -1,4 +1,4 @@
-const validadeBody = (request, response, next) => {
+const validadeFieldTitle = (request, response, next) => {
   const {body} = request;
 
   if (body.title === undefined) {
@@ -12,7 +12,22 @@ const validadeBody = (request, response, next) => {
 };
 
 
+const validadeFieldStatus = (request, response, next) => {
+  const {body} = request;
+
+  if (body.status === undefined) {
+    return response.status(400).json({message:'The field status is required'});
+  }
+  if (body.status === '') {
+    return response.status(400).json({message:'The field status can not be empity'});
+  }
+
+  next();
+};
+
+
 
 module.exports = {
-  validadeBody,
+  validadeFieldTitle,
+  validadeFieldStatus
 };
