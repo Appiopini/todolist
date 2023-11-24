@@ -35,12 +35,6 @@ const creatSelect = (value) => {
 
 }
 
-const task = {
-  id: 1,
-  title: 'Vai dar certo',
-  created_at: '21 de novembro de 2023',
-  status: 'pendente'
-}
 
 const createRow = (task) => {
 
@@ -71,10 +65,17 @@ const createRow = (task) => {
   tr.appendChild(tdStatus);
   tr.appendChild(tdAction);
 
-
-  // tr.appendChild(editButton);
-  tbody.appendChild(tr);
+  return tr;
 
 }
 
-createRow(task)
+const loadTask = async () =>{
+  const tasks = await fetchTask();
+
+  tasks.forEach((task) => {
+    const tr = createRow(task);
+    tbody.appendChild(tr);
+  });
+}
+
+loadTask();
